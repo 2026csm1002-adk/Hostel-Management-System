@@ -190,8 +190,8 @@ TURSO_AUTH_TOKEN=
 |---|---|---|
 | Aditya Kumar | 2026CSM1002 | Backend & Database Lead |
 | Aryan Shrivastva | 2026CSM1007 | Frontend & UI Lead |
-| Shahid Alam | 2026CSM1018 | Hostel Module & Workflow Lead |
-| Akash Maurya | 2026CSM1024 | Integration, Testing & Deployment Lead |
+| Akash Maurya | 2026CSM1018 | Hostel Module & Workflow Lead |
+| Shahid Alam | 2026CSM1024 | Integration, Testing & Deployment Lead |
 
 
 ---
