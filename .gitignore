@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets
+.env
+.env.local
+.env.*.local
+
+# local database and local seed data
+local.db
+local.db-journal
+scripts/seed-staff.json
+
+.DS_Store
+.vercel
