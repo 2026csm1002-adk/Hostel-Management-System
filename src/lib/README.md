@@ -26,10 +26,20 @@ Small, general pieces with no database access, safe to import from both browser 
 
 - `MAX_ROOMS_PER_SLOT = 3`, `BOOKING_MIN_DAYS_AHEAD = 2`, `BOOKING_MAX_DAYS_AHEAD = 4`, `REREGISTER_AFTER_DAYS = 7`.
 - `SLOT_STARTS`: 09:00, 10:00, 11:00, 12:00, 14:00, 15:00 (one-hour slots 9-1 and 2-4).
-- `ROLES`, `COURSES` (BTech, MTech, PhD, Other).
+- `ROLES`, `STAFF_ROLES`, `COURSES` (BTech, MTech, PhD, Other).
+- `ROLE_HOME`: the home screen of each role, used by `page.tsx` and `proxy.ts`.
 - `COMPLAINT_CATEGORIES` (8), `COMPLAINT_STATUSES`, `SWAP_STATUSES`.
 - `HOSTELS`: the 8 hostels with type Boys or Girls.
 - This is how the SRS requirement "rules must be configurable" is met.
+
+
+### `student-identity.ts`
+
+**What it does:** Reads a student's institute email and works out the roll number (upper-case, e.g. `2026csm1024@...` -> `2026CSM1024`, `amul.24csz0016@...` -> `24CSZ0016`), the batch (admission year; a 2-digit year such as `24` becomes `2024`) and a name when the email has one (`amul` -> `Amul`). `displayName()` picks the Google account name first.
+
+**Called by:** `student/page.tsx`, `student/profile/page.tsx`.
+
+**Calls:** Nothing.
 
 
 ### `dates.ts`

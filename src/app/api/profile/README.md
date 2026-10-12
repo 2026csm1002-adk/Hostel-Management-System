@@ -28,4 +28,4 @@ Read and update the logged-in student's profile.
 
 - Who: Student only.
 - PUT body is checked with `profileSchema` (full name, hostel, wing, room, course, batch).
-- Roll no is taken from the session and can never be changed by the request body.
+- Once the profile exists, the roll no is taken from the session and can never be changed by the request body. On the very first save (session `userId` is null) the roll no comes from the request body and becomes the student's id.

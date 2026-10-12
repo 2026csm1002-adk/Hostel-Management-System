@@ -23,6 +23,6 @@ Small programs that you run from the terminal to prepare or maintain data. They 
 **Details:**
 
 - Hostels: Satluj, Beas, Chenab, Brahmaputra South, Brahmaputra North (Boys); Raavi, Chintpurni, T6 (Girls).
-- Staff rows need real Google emails so staff can sign in; read them from an environment variable or a small local file that is NOT committed.
+- Staff rows need real institute emails (stored in lower case) so staff can sign in. They are read from `scripts/seed-staff.json`, which is git-ignored so real emails never reach GitHub. Format: `[{ "name": "...", "email": "...", "role": "Caretaker", "hostel": "satluj" }, { "name": "...", "email": "...", "role": "Supervisor" }]`. Hostel ids: satluj, beas, chenab, brahmaputra-south, brahmaputra-north, raavi, chintpurni, t6. The Supervisor has no hostel.
 - Must be safe to run twice (insert-or-ignore) so nobody duplicates or wipes data by accident.
 - Only run it against a development database unless you are sure.

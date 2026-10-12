@@ -39,6 +39,20 @@ Forms and pickers used on the student pages.
 **Calls:** `POST /api/swaps`.
 
 
+### `StudentTabs.tsx`
+
+**What it does:** The Requests and Profile pills under the page title; the pill of the open page is dark.
+
+**Called by:** `student/layout.tsx`.
+
+
+### `ActionStubs.tsx`
+
+**What it does:** TEMPORARY. The three cards (Book room cleaning, Submit a complaint, Request room swap) with a "+" that opens a short note. Replace the note with `SlotPicker`, `ComplaintForm` and `SwapForm` when they exist.
+
+**Called by:** `student/page.tsx`.
+
+
 ### `ProfileForm.tsx`
 
 **What it does:** Roll no (read-only), name, hostel dropdown, wing, room, course, batch and Save.
@@ -46,3 +60,5 @@ Forms and pickers used on the student pages.
 **Called by:** `student/profile/page.tsx`.
 
 **Calls:** `PUT /api/profile`.
+
+**Current behaviour (temporary):** display only. Name, roll no, email and batch are filled from the login; hostel, wing, room and course show "Not set yet". The Save button is disabled until the profile is connected to the database.

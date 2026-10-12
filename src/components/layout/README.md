@@ -18,14 +18,7 @@ The parts that surround page content.
 
 **Called by:** Role layouts (`student/layout.tsx`, `caretaker/layout.tsx`, ...).
 
-**Calls:** `signOut` from Auth.js.
-
-
-### `Sidebar.tsx`
-
-**What it does:** Optional side menu for staff dashboards with more sections.
-
-**Called by:** Staff layouts.
+**Calls:** `signOut` from `next-auth/react`.
 
 
 ### `PageHeader.tsx`

@@ -32,9 +32,3 @@ Call a route and check the real result in a throwaway database (`DATABASE_URL=fi
 
 **Called by:** `npm test`.
 
-
-### `auth.api.test.ts`
-
-**What it does:** Wrong role gets redirected or 403; wrong email domain is refused.
-
-**Called by:** `npm test`.

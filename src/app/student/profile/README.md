@@ -22,5 +22,5 @@ Where a student keeps the details that are auto-attached to every request.
 
 **Details:**
 
-- Roll No is the primary key and can never be edited.
+- Roll No is the primary key: typed once when the profile is created, then read-only forever.
 - First login: if no profile exists, send the student here to create it before anything else.

@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Design tokens from the prototype. Use them as bg-ink, text-ink-soft, border-line, ... */
+@theme inline {
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-ink: #1b2430;
+  --color-ink-soft: #5b6572;
+  --color-paper: #eef2f1;
+  --color-line: #d7deda;
+  --color-line-strong: #b9c3bd;
+
+  --color-teal: #1f6f63;
+  --color-teal-soft: #e1eeea;
+  --color-amber: #b8791f;
+  --color-amber-soft: #f5eada;
+  --color-indigo: #3b4c86;
+  --color-indigo-soft: #e6e9f3;
+  --color-green: #3f7d52;
+  --color-green-soft: #e2efe5;
+  --color-brick: #ae4328;
+  --color-brick-soft: #f4e2dc;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}

@@ -8,7 +8,7 @@
 
 ## What this folder is for
 
-Everything a student can open under `/student/...`. Middleware only lets the Student role in.
+Everything a student can open under `/student/...`. The proxy only lets the Student role in.
 
 ## Rules for this folder
 

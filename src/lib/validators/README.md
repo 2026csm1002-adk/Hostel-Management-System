@@ -24,7 +24,7 @@ One file per module. The API routes run these on every request, and forms can re
 
 **Details:**
 
-- Roll no is deliberately absent because it is read-only.
+- Roll no is not part of `profileSchema` because it is read-only after creation. The first save also needs `rollNo` (a `createProfileSchema` = `profileSchema` + `rollNo`).
 
 
 ### `cleaning.schema.ts`

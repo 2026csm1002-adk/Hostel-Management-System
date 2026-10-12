@@ -25,7 +25,7 @@ Anything in this folder is available directly from the website root. A file `pub
 
 ### `logo.svg`
 
-**What it does:** HostelHub logo used in the login page and the top bar.
+**What it does:** HMS logo used in the login page and the top bar.
 
 **Called by:** `Navbar` component and the login page.
 

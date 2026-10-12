@@ -28,7 +28,7 @@ This is the Next.js App Router. A folder containing `page.tsx` becomes a web pag
 
 **Details:**
 
-- Sets metadata: title "HostelHub".
+- Sets metadata: title "HMS: Hostel Management System".
 - Imports `globals.css` once.
 - Contains no role-specific UI; each role has its own `layout.tsx`.
 

@@ -43,3 +43,6 @@ Where the database is described and connected.
 - `swap_request`: swap_id PK, student_id FK, reason, attachment_id FK, status, assigned_room, caretaker_id FK, warden_id FK, warden_comment, created_at.
 - `attachment`: attachment_id PK, storage_file_id, file_name, uploaded_at.
 - Allowed values (statuses, categories, courses) come from `src/lib/constants.ts` so the database and UI always agree.
+- Import constants with a relative path here (`../../lib/constants`): drizzle-kit does not understand the `@/` alias.
+- Property names are camelCase in code (`studentId`, `googleEmail`, `hostelId`, `staffId`, `roomNo`) and snake_case in the database. Emails are stored in lower case.
+- `drizzle.config.ts` (project root) tells drizzle-kit where `schema.ts` is and reads `DATABASE_URL` / `TURSO_AUTH_TOKEN` from `.env.local`.

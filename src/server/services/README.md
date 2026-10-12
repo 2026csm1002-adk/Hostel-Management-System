@@ -14,7 +14,7 @@ A service answers "is this allowed, and what should happen?". It enforces every 
 
 - Services never touch `Request` or `Response`; that is the route's job.
 - Read numbers (3 seats, 2-4 days, 7 days) from `src/lib/constants.ts`, never hard-code them.
-- Re-check the caller's role and hostel here even though middleware already did.
+- Re-check the caller's role and hostel here even though the proxy already did.
 
 ## Files that go in this folder
 
@@ -30,7 +30,7 @@ A service answers "is this allowed, and what should happen?". It enforces every 
 
 **Details:**
 
-- `resolveRole(email)`: finds the email in StaffUser (Caretaker / Supervisor / Warden) or Student and returns `{ role, userId, hostelId }`, or null if unknown.
+- `resolveRole(email)`: finds the email in StaffUser (Caretaker / Supervisor / Warden) and returns `{ role, userId, hostelId }`. Any other institute email is a Student: `userId` and `hostelId` come from the Student row, or are both null while the student has not created a profile yet. It never returns null, because the institute-email check already happened in `auth.ts`. Emails are compared in lower case.
 - `requireRole(session, allowedRoles)`: throws `ForbiddenError` if the role is not allowed.
 
 
@@ -47,7 +47,7 @@ A service answers "is this allowed, and what should happen?". It enforces every 
 **Details:**
 
 - `getProfile(studentId)`, `upsertProfile(studentId, data)`.
-- Roll no (student_id) is read-only; ignore it if sent in the data.
+- Roll no (student_id) is accepted only on the first save, when the profile is created; it must be unique (`ConflictError` if it already belongs to someone else). After that it is read-only and ignored if sent.
 
 
 ### `cleaning.service.ts`
