@@ -15,7 +15,7 @@ export async function resolveRole(email: string): Promise<ResolvedUser> {
 
   const staff = await staffUserRepo.findByEmail(e);
   if (staff) {
-    return { role: staff.role, userId: staff.staffId, hostelId: staff.hostelId ?? null };
+    return { role: staff.role as Role, userId: staff.staffId, hostelId: staff.hostelId ?? null };
   }
 
   const student = await studentRepo.findByEmail(e);

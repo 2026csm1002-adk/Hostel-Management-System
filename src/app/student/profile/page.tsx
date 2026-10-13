@@ -10,18 +10,14 @@ export default async function StudentProfilePage() {
 
   const id = parseStudentEmail(email);
 
+  // Saved values (hostel, wing, room, course) are loaded by the form from /api/profile.
   return (
     <ProfileForm
-      values={{
+      identity={{
         name: displayName(session?.user?.name, id),
         rollNo: id.rollNo,
         email: id.email,
         batch: id.batch,
-        // Not known yet: filled from the database once the profile can be saved.
-        hostel: null,
-        wing: null,
-        room: null,
-        course: null,
       }}
     />
   );
