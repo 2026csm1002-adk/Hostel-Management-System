@@ -2,19 +2,23 @@
   "name": "hms",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests yet\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "vitest run tests/e2e",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx --env-file=.env.local scripts/seed.ts"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.0",
     "drizzle-orm": "^0.44.0",
     "next": "^16.0.0",
     "next-auth": "beta",
@@ -23,16 +27,18 @@
     "zod": "^4.0.0"
   },
   "devDependencies": {
+    "@libsql/client": "^0.18.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "dotenv": "^16.0.0",
-    "drizzle-kit": "^0.31.0",
+    "dotenv": "^16.6.1",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.0.0",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.11"
   }
 }

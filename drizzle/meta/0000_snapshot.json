@@ -1,0 +1,622 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "64849da0-64c0-4d6f-a0bc-c3aeefd57de8",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "attachment": {
+      "name": "attachment",
+      "columns": {
+        "attachment_id": {
+          "name": "attachment_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "storage_file_id": {
+          "name": "storage_file_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "file_name": {
+          "name": "file_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "uploaded_at": {
+          "name": "uploaded_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "cleaning_booking": {
+      "name": "cleaning_booking",
+      "columns": {
+        "booking_id": {
+          "name": "booking_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "student_id": {
+          "name": "student_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hostel_id": {
+          "name": "hostel_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "floor": {
+          "name": "floor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_no": {
+          "name": "room_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "booking_date": {
+          "name": "booking_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "slot_start": {
+          "name": "slot_start",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "seat": {
+          "name": "seat",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "cleaning_slot_unique": {
+          "name": "cleaning_slot_unique",
+          "columns": [
+            "hostel_id",
+            "floor",
+            "booking_date",
+            "slot_start",
+            "seat"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "cleaning_booking_student_id_student_student_id_fk": {
+          "name": "cleaning_booking_student_id_student_student_id_fk",
+          "tableFrom": "cleaning_booking",
+          "tableTo": "student",
+          "columnsFrom": [
+            "student_id"
+          ],
+          "columnsTo": [
+            "student_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "cleaning_booking_hostel_id_hostel_hostel_id_fk": {
+          "name": "cleaning_booking_hostel_id_hostel_hostel_id_fk",
+          "tableFrom": "cleaning_booking",
+          "tableTo": "hostel",
+          "columnsFrom": [
+            "hostel_id"
+          ],
+          "columnsTo": [
+            "hostel_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "cleaning_seat_check": {
+          "name": "cleaning_seat_check",
+          "value": "\"cleaning_booking\".\"seat\" BETWEEN 1 AND 3"
+        },
+        "cleaning_status_check": {
+          "name": "cleaning_status_check",
+          "value": "\"cleaning_booking\".\"status\" IN ('Confirmed', 'Done')"
+        }
+      }
+    },
+    "complaint": {
+      "name": "complaint",
+      "columns": {
+        "complaint_id": {
+          "name": "complaint_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "student_id": {
+          "name": "student_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "resolved_at": {
+          "name": "resolved_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "reregistered_from": {
+          "name": "reregistered_from",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "complaint_student_id_student_student_id_fk": {
+          "name": "complaint_student_id_student_student_id_fk",
+          "tableFrom": "complaint",
+          "tableTo": "student",
+          "columnsFrom": [
+            "student_id"
+          ],
+          "columnsTo": [
+            "student_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_complaint_reregistered": {
+          "name": "fk_complaint_reregistered",
+          "tableFrom": "complaint",
+          "tableTo": "complaint",
+          "columnsFrom": [
+            "reregistered_from"
+          ],
+          "columnsTo": [
+            "complaint_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "complaint_status_check": {
+          "name": "complaint_status_check",
+          "value": "\"complaint\".\"status\" IN ('Open', 'InProgress', 'Resolved')"
+        }
+      }
+    },
+    "hostel": {
+      "name": "hostel",
+      "columns": {
+        "hostel_id": {
+          "name": "hostel_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "hostel_name_unique": {
+          "name": "hostel_name_unique",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "hostel_type_check": {
+          "name": "hostel_type_check",
+          "value": "\"hostel\".\"type\" IN ('Boys', 'Girls')"
+        }
+      }
+    },
+    "staff_user": {
+      "name": "staff_user",
+      "columns": {
+        "staff_id": {
+          "name": "staff_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "google_email": {
+          "name": "google_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hostel_id": {
+          "name": "hostel_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "staff_user_google_email_unique": {
+          "name": "staff_user_google_email_unique",
+          "columns": [
+            "google_email"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "staff_user_hostel_id_hostel_hostel_id_fk": {
+          "name": "staff_user_hostel_id_hostel_hostel_id_fk",
+          "tableFrom": "staff_user",
+          "tableTo": "hostel",
+          "columnsFrom": [
+            "hostel_id"
+          ],
+          "columnsTo": [
+            "hostel_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "staff_role_check": {
+          "name": "staff_role_check",
+          "value": "\"staff_user\".\"role\" IN ('Caretaker', 'Supervisor', 'Warden')"
+        }
+      }
+    },
+    "student": {
+      "name": "student",
+      "columns": {
+        "student_id": {
+          "name": "student_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "google_email": {
+          "name": "google_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hostel_id": {
+          "name": "hostel_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "wing": {
+          "name": "wing",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_no": {
+          "name": "room_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "course": {
+          "name": "course",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "batch": {
+          "name": "batch",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "student_google_email_unique": {
+          "name": "student_google_email_unique",
+          "columns": [
+            "google_email"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "student_hostel_id_hostel_hostel_id_fk": {
+          "name": "student_hostel_id_hostel_hostel_id_fk",
+          "tableFrom": "student",
+          "tableTo": "hostel",
+          "columnsFrom": [
+            "hostel_id"
+          ],
+          "columnsTo": [
+            "hostel_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "student_course_check": {
+          "name": "student_course_check",
+          "value": "\"student\".\"course\" IN ('BTech', 'MTech', 'PhD', 'Other')"
+        }
+      }
+    },
+    "swap_request": {
+      "name": "swap_request",
+      "columns": {
+        "swap_id": {
+          "name": "swap_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "student_id": {
+          "name": "student_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reason": {
+          "name": "reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attachment_id": {
+          "name": "attachment_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "assigned_room": {
+          "name": "assigned_room",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "caretaker_id": {
+          "name": "caretaker_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "warden_id": {
+          "name": "warden_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "warden_comment": {
+          "name": "warden_comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "swap_request_student_id_student_student_id_fk": {
+          "name": "swap_request_student_id_student_student_id_fk",
+          "tableFrom": "swap_request",
+          "tableTo": "student",
+          "columnsFrom": [
+            "student_id"
+          ],
+          "columnsTo": [
+            "student_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "swap_request_attachment_id_attachment_attachment_id_fk": {
+          "name": "swap_request_attachment_id_attachment_attachment_id_fk",
+          "tableFrom": "swap_request",
+          "tableTo": "attachment",
+          "columnsFrom": [
+            "attachment_id"
+          ],
+          "columnsTo": [
+            "attachment_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "swap_request_caretaker_id_staff_user_staff_id_fk": {
+          "name": "swap_request_caretaker_id_staff_user_staff_id_fk",
+          "tableFrom": "swap_request",
+          "tableTo": "staff_user",
+          "columnsFrom": [
+            "caretaker_id"
+          ],
+          "columnsTo": [
+            "staff_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "swap_request_warden_id_staff_user_staff_id_fk": {
+          "name": "swap_request_warden_id_staff_user_staff_id_fk",
+          "tableFrom": "swap_request",
+          "tableTo": "staff_user",
+          "columnsFrom": [
+            "warden_id"
+          ],
+          "columnsTo": [
+            "staff_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "swap_status_check": {
+          "name": "swap_status_check",
+          "value": "\"swap_request\".\"status\" IN ('Pending', 'Forwarded', 'Accepted', 'AwaitingRoom', 'RoomAssigned', 'Rejected', 'Waiting')"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
