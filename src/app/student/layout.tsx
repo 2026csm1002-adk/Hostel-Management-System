@@ -1,17 +1,14 @@
-import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import { requirePageRole } from "@/server/page-guards";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { StudentTabs } from "@/components/student/StudentTabs";
 
 export default async function StudentLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth();
-  const email = session?.user?.email;
-  if (!email) redirect("/login");
+  const { email } = await requirePageRole("Student");
 
   return (
     <>
-      <Navbar userEmail={email} roleLabel="Student" tabColor="#2E8C7B" />
+      <Navbar userEmail={email!} roleLabel="Student" tabColor="#2E8C7B" />
       <main className="mx-auto max-w-[1140px] px-5 pb-20 pt-7">
         <PageHeader
           title="My hostel"

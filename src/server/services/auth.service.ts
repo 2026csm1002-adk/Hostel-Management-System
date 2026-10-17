@@ -35,3 +35,9 @@ export function requireRole(
     throw new ForbiddenError("You do not have access to this");
   }
 }
+
+/** Staff screens are limited to one hostel. Throws if the staff account has none. */
+export function requireHostel(user: Pick<SessionUser, "hostelId">): string {
+  if (!user.hostelId) throw new ForbiddenError("No hostel is assigned to your account.");
+  return user.hostelId;
+}

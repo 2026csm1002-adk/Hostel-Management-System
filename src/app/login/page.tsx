@@ -14,12 +14,12 @@ const PORTALS = {
   student: {
     title: "Student",
     description: "Book cleaning, raise complaints, request a room swap",
-    redirectTo: "/student",
+    redirectTo: "/", // the role (from the staff list) decides where they land
   },
   admin: {
     title: "Admin",
     description: "Caretaker, Cleaning Supervisor and Warden access",
-    redirectTo: "/admin",
+    redirectTo: "/", // the role (from the staff list) decides where they land
   },
 } as const;
 
